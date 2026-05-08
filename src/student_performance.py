@@ -41,6 +41,7 @@ print(df.dtypes)
 #==========================
 
 #Target variable
+print("-------------------------------------")
 
 y = df["G3"]
 
@@ -58,3 +59,36 @@ print("\nNumber of input features:")
 print(X.shape[1])
 print("\nTarget variable:")
 print(y.name)
+
+#===================================
+# Encode Categorical Variables
+#===================================
+
+# Apply one-hot encoding
+
+X_encoded = pd.get_dummies(X, drop_first=True)
+
+print("\nEncoded Feature Matrix")
+print("-------------------------------------")
+
+print("Encoded X shape:")
+print(X_encoded.shape)
+
+print("\nFirst 5 rows of encoded data:")
+print(X_encoded.head())
+
+print("\nEncoded data types:")
+print(X_encoded.dtypes)
+
+
+
+
+
+
+
+
+
+
+
+
+

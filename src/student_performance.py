@@ -35,3 +35,26 @@ print(df.isnull().sum())
 
 print("\nData Types:")
 print(df.dtypes)
+
+#==========================
+# Define Input and Output
+#==========================
+
+#Target variable
+
+y = df["G3"]
+
+# Input feature
+X = df.drop(columns=["G3"])
+
+print("\nInput/Output Definition")
+print("Feature matrix (X) shape:")
+print(X.shape)
+
+print("\nTarget vector (y) shape:")
+print(y.shape)
+
+print("\nNumber of input features:")
+print(X.shape[1])
+print("\nTarget variable:")
+print(y.name)

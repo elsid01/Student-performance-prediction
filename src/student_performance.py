@@ -3,6 +3,8 @@ from pathlib import Path
 
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
+from sklearn.metrics import mean_squared_error, r2_score
+import numpy as np
 
 #=================
 # Load Dataset
@@ -129,6 +131,29 @@ print("\ny_test shape:")
 print(y_test.shape)
 
 
+#===============================
+# Baseline Model
+#===============================
+
+# Average target value form training set
+baseline_prediction = y_train.mean()
+
+# Predict the mean for every test sample
+y_pred_baseline = np.full(len(y_train), baseline_prediction)
+
+# Evaluation metrics
+baseline_mse = mean_squared_error(y_train, y_pred_baseline)
+baseline_r2 = r2_score(y_train, y_pred_baseline)
+baseline_rmse = np.sqrt(baseline_mse)
+
+print("\nBaseline Model:")
+print("------------------------------")
+
+print(f"Mean prediction: {baseline_prediction:.2f}")
+
+print(f"\nBaseline MSE: {baseline_mse:.2f}")
+print(f"Baseline R-squared: {baseline_r2:.2f}")
+print(f"Baseline RMSE: {baseline_rmse:.2f}")
 
 
 

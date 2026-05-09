@@ -1,6 +1,6 @@
 import pandas as pd
 from pathlib import Path
-
+from sklearn.preprocessing import StandardScaler
 
 #=================
 # Load Dataset
@@ -80,6 +80,25 @@ print(X_encoded.head())
 print("\nEncoded data types:")
 print(X_encoded.dtypes)
 
+
+#====================================
+# Feature Scaling
+#====================================
+
+#Initialize scaler
+scaler = StandardScaler()
+
+#Scale feature
+X_scaled = scaler.fit_transform(X_encoded)
+
+print("\nFeature scaling")
+print("------------------------------------")
+
+print("Scaling feature matrix shape:")
+print(X_scaled.shape)
+
+print("\nFirst 5 rows of scaled feature matrix:")
+print(X_scaled[:5])
 
 
 

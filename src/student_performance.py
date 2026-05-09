@@ -1,5 +1,7 @@
 import pandas as pd
 from pathlib import Path
+
+from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 
 #=================
@@ -101,6 +103,30 @@ print("\nFirst 5 rows of scaled feature matrix:")
 print(X_scaled[:5])
 
 
+#========================================
+# Train & Test Split
+#========================================
+
+X_trian, X_test, y_train, y_test = train_test_split(
+    X_scaled,
+    y,
+    test_size=0.2,
+    random_state=42,
+)
+
+print("\nTrain and test split:")
+print("-----------------------------------")
+
+print("X_train shape:")
+print(X_trian.shape)
+
+print("\nX_test shape:")
+print(X_test.shape)
+
+print("\ny_train shape:")
+print(y_train.shape)
+print("\ny_test shape:")
+print(y_test.shape)
 
 
 

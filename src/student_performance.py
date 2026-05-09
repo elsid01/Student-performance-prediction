@@ -6,6 +6,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
 
+from sklearn.linear_model import LinearRegression
+
 #=================
 # Load Dataset
 #=================
@@ -155,6 +157,31 @@ print(f"\nBaseline MSE: {baseline_mse:.2f}")
 print(f"Baseline R-squared: {baseline_r2:.2f}")
 print(f"Baseline RMSE: {baseline_rmse:.2f}")
 
+
+#=================================================
+# Linear Regression Model
+#==================================================
+
+# Initializing Model
+linear_model = LinearRegression()
+
+# Train model
+linear_model.fit(X_trian, y_train)
+
+#Generate prediction
+y_pred_linear = linear_model.predict(X_test)
+
+#Evaluation metrics
+linear_mse = mean_squared_error(y_test, y_pred_linear)
+linear_rmse = np.sqrt(linear_mse)
+linear_r2 = r2_score(y_test, y_pred_linear)
+
+print("\n Linear Regression Model:")
+print("-----------------------------------")
+
+print(f"Linear Regression MSE: {linear_mse:.2f}")
+print(f"Linear Regression R-squared: {linear_r2:.2f}")
+print(f"Linear Regression RMSE: {linear_rmse:.2f}")
 
 
 

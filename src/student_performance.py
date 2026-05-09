@@ -7,6 +7,8 @@ from sklearn.metrics import mean_squared_error, r2_score
 import numpy as np
 
 from sklearn.linear_model import LinearRegression
+from sklearn.linear_model import Ridge
+
 
 #=================
 # Load Dataset
@@ -183,6 +185,29 @@ print(f"Linear Regression MSE: {linear_mse:.2f}")
 print(f"Linear Regression R-squared: {linear_r2:.2f}")
 print(f"Linear Regression RMSE: {linear_rmse:.2f}")
 
+#=============================================
+# Ridge Regression Model
+#=============================================
+
+# Initializing Ridge model
+ridge_model = Ridge(alpha=1.0)
+#Train model
+ridge_model.fit(X_trian, y_train)
+
+#Generate predictions
+y_pred_ridge = ridge_model.predict(X_test)
+
+# Evaluation metric
+ridge_mse = mean_squared_error(y_test, y_pred_ridge)
+ridge_r2 = r2_score(y_test, y_pred_ridge)
+ridge_rmse = np.sqrt(ridge_mse)
+
+print("\n Ridge Regression Model:")
+print("---------------------------------")
+
+print(f"Ridge Regression MSE: {ridge_mse:.2f}")
+print(f"Ridge Regression R-squared: {ridge_r2:.2f}")
+print(f"Ridge Regression RMSE: {ridge_rmse:.2f}")
 
 
 

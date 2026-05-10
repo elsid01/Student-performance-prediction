@@ -9,6 +9,7 @@ import numpy as np
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge
 
+from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 
 #=================
 # Load Dataset
@@ -210,6 +211,30 @@ print(f"Ridge Regression R-squared: {ridge_r2:.2f}")
 print(f"Ridge Regression RMSE: {ridge_rmse:.2f}")
 
 
+#==================================
+# KNN Regression Model
+#===================================
+
+# Initializing KNN model
+knn_model = KNeighborsRegressor(n_neighbors=5)
+
+# Train model
+knn_model.fit(X_trian, y_train)
+
+#Generate predictions
+y_pred_knn = knn_model.predict(X_test)
+
+#Evaluation metrics
+knn_mse = mean_squared_error(y_test, y_pred_knn)
+knn_r2 = r2_score(y_test, y_pred_knn)
+knn_rmse = np.sqrt(knn_mse)
+
+print("\n KNN Regression Model:")
+print("-------------------------------------")
+
+print(f"KNN Regression MSE: {knn_mse:.2f}")
+print(f"KNN Regression R-squared: {knn_r2:.2f}")
+print(f"KNN Regression RMSE: {knn_rmse:.2f}")
 
 
 

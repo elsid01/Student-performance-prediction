@@ -302,3 +302,80 @@ plt.grid(True)
 
 plt.savefig(PROJECT_ROOT / "results" / "figures" / "linear_regression_predictions.png")
 #plt.show()
+
+#========================================
+# Model Performance Comparison
+#========================================
+
+comparison_df = pd.DataFrame({
+    "Model": [
+        "Baseline",
+        "Linear Regression",
+        "Ridge Regression",
+        "KNN Regression"
+    ],
+    "MSE":[
+        baseline_mse,
+        linear_mse,
+        ridge_mse,
+        knn_mse
+    ],
+    "RMSE":[
+        baseline_rmse,
+        linear_rmse,
+        ridge_rmse,
+        knn_rmse
+    ],
+    "R2 Score":[
+        baseline_r2,
+        linear_r2,\
+        ridge_r2,
+        knn_r2
+    ]
+})
+
+print("\nModel Performance Comparison:")
+print(comparison_df)
+
+
+# Saving the table
+comparison_df.to_csv(
+    PROJECT_ROOT / "results"/ "tables" / "model_comparison.csv",
+    index=False,
+)
+
+
+
+#===============================
+# RMSE Comparison Plot
+#===============================
+plt.figure(figsize=(10, 10))
+
+sns.barplot(
+    x="Model",
+    y="MSE",
+    data=comparison_df
+)
+
+plt.title("Model RMSE Comparison")
+plt.xticks(rotation=10)
+
+plt.savefig(PROJECT_ROOT / "results" / "figures" / "rmse_comparison.png")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

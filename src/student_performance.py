@@ -10,6 +10,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import Ridge
 
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
+from sklearn.decomposition import PCA
 
 #=================
 # Load Dataset
@@ -235,6 +236,25 @@ print("-------------------------------------")
 print(f"KNN Regression MSE: {knn_mse:.2f}")
 print(f"KNN Regression R-squared: {knn_r2:.2f}")
 print(f"KNN Regression RMSE: {knn_rmse:.2f}")
+
+
+#=======================================
+# PCA Analysis
+#========================================
+
+pca = PCA(n_components=2)
+
+#Apply PCA
+x_pca = pca.fit_transform(X_scaled)
+
+print("\nPCA Analysis")
+print("-----------------------------")
+
+print("\nPCA transformed data shape:")
+print(pca.explained_variance_ratio_)
+
+print("\nTotal explained variance:")
+print(pca.explained_variance_ratio_.sum())
 
 
 

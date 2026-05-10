@@ -12,6 +12,8 @@ from sklearn.linear_model import Ridge
 from sklearn.neighbors import KNeighborsClassifier, KNeighborsRegressor
 from sklearn.decomposition import PCA
 
+import matplotlib.pyplot as plt
+import seaborn as sns
 #=================
 # Load Dataset
 #=================
@@ -257,5 +259,46 @@ print("\nTotal explained variance:")
 print(pca.explained_variance_ratio_.sum())
 
 
+#==================================
+# PCA visualization
+#==================================
 
+plt.figure(figsize=(10, 10))
+plt.scatter(
+    x_pca[:, 0],
+    x_pca[:, 1],
+    alpha=0.7,
+)
 
+plt.title("PCA Projection of Student Dataset")
+plt.xlabel("PCA Component 1")
+plt.ylabel("PCA Component 2")
+
+plt.grid(True)
+
+plt.savefig(PROJECT_ROOT / "results" / "figures" / "pca_scatter.png")
+
+#plt.show()
+
+#====================================
+# Actual vs Predicted Plot
+#====================================
+
+plt.figure(figsize=(10, 10))
+plt.scatter(y_test, y_pred_linear, alpha=0.5)
+
+plt.xlabel("Actual G3")
+plt.ylabel("Predicted G3")
+
+plt.title("Actual vs Predicted Grades (Linear regression)")
+
+plt.plot(
+    [y_test.min(), y_test.max()],
+    [y_test.min(), y_test.max()],
+    linestyle="--",
+)
+
+plt.grid(True)
+
+plt.savefig(PROJECT_ROOT / "results" / "figures" / "linear_regression_predictions.png")
+#plt.show()
